@@ -22,11 +22,11 @@ const resendinstance = new Resend(process.env.RESET_API)
 //Signup API
 const SignupUser = async (req, res) => {
 
-    const { email, name, Password, confirmPassword, phone } = req.body
+    const { email, name, Password, phone } = req.body
 
     try {
 
-        if(!email || !Password || !confirmPassword || !name) {
+        if(!email || !Password || !name || !phone) {
             throw Error('All fields must be filled!')
         }
 
@@ -52,10 +52,6 @@ const SignupUser = async (req, res) => {
 
         if(!validator.isMobilePhone(phone)){
             throw Error('Phone no not valid!')
-        }
-
-        if(Password !== confirmPassword) {
-            throw Error('Passwords have to be same!')
         }
 
         const salt = await bcrypt.genSalt(10)
