@@ -1,9 +1,33 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Signup from './pages/Signup';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+    <Routes>
+
+    <Route 
+    path='/signup'
+    element={<Signup />}
+    />
+
+    <Route 
+    path='/login'
+    element={<></>}
+    />
+
+    <Route
+    path='/forgot-password'
+    element={<></>}
+    />
+
+    <Route
+    path='/reset-password/:token'
+    element={<></>}
+    />
+
+    </Routes>
+    </BrowserRouter>
   );
 }
 
