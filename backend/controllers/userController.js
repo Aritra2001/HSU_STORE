@@ -57,7 +57,7 @@ const SignupUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(Password, salt)
 
-        const user = await User.create({email, password: hash, hex_coins: 50, phone, name})
+        const user = await User.create({email, password: hash, hex_coins: 0, phone, name})
         const token = createToken(user._id)
         await User.findByIdAndUpdate(user._id, {verifyToken: token, verifiedStatus: false})
         var link = ``
@@ -113,6 +113,7 @@ const verifySignup = async (req, res) => {
         }
         else {
             user.verifiedStatus = true
+            user.hex_coins = 50
             user.verifyToken = undefined
             user.save()
         }
