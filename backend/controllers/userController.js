@@ -181,7 +181,7 @@ const forgotpassword = async (req, res) => {
             await User.findByIdAndUpdate(user._id, {passwordResetToken: hash_token, passwordResetTokenExpire: Date.now() + 20 * 60 * 1000})
 
             //email send
-            const link = ``
+            const link = `http://localhost:3000/reset-password/${token}`
 
             await resendinstance.emails.send({
                 from: 'network@hexstaruniverse.com',
