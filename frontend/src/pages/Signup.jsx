@@ -93,7 +93,7 @@ const Signup = () => {
 
                 </div>
 
-                <button className="sm:w-[613px] sm:h-14 bg-violet-600 w-[263px] h-[39.20px] rounded-[9px] sm:rounded-[15px] border border-black backdrop-blur-[22px] text-white sm:text-xl text-xs font-normal font-['Poppins'] max-sm:mt-8 hover:bg-violet-700 disabled:opacity-75 " onClick={handelSignup} disabled={loading}>Sign up</button>
+                <button className="sm:w-[613px] sm:h-14 bg-violet-600 w-[263px] h-[39.20px] rounded-[9px] sm:rounded-[15px] border border-black backdrop-blur-[22px] text-white sm:text-xl text-xs font-normal font-['Poppins'] max-sm:mt-8 hover:bg-violet-700 disabled:opacity-75 " onClick={handelSignup} disabled={loading}>{loading ? <>Loading...</> : <>Sign up</>}</button>
                 <ToastContainer />
 
                 <div className='max-sm:mt-8'>
