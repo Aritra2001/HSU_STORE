@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const redeemCodeRoutes = require('./routes/redeemCodeRoutes')
+const razorpayRoutes = require('./routes/razorpay')
 
 //express app
 const app = express()
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api/users', userRoutes)
 app.use('/api/admin', redeemCodeRoutes)
+app.use('/api/users', razorpayRoutes)
 
 //database connection
 mongoose.connect(process.env.MONGO_URI)
