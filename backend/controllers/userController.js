@@ -61,7 +61,7 @@ const SignupUser = async (req, res) => {
         const token = createToken(user._id)
         await User.findByIdAndUpdate(user._id, {verifyToken: token, verifiedStatus: false})
 
-        var link = `http://4000/api/users/verify-email/${token}`
+        var link = `http://localhost:3000/email-verify/${token}`
 
         //send signup verification mail
         await resendinstance.emails.send({
