@@ -152,7 +152,7 @@ const loginUser = async (req, res) => {
         }
         
         const token = createToken(user._id)
-        await user.findByIdAndUpdate(user._id, {new_user: false})
+        await User.findByIdAndUpdate(user._id, {new_user: undefined})
 
         res.status(200).json({user, token})
 

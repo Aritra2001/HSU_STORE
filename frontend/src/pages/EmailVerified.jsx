@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import GreenCheck from '../assets/GreenCheck.svg';
-import { MdErrorOutline } from "react-icons/md";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,8 +11,8 @@ const EmailVerified = () => {
     const { dispatch } = useAuthContext()
     const navigator = useNavigate()
 
-
-    const handleEmailVerified = async () => {
+    useEffect(() => {
+      const handleEmailVerified = async () => {
         try {
             const token = getToken();
             const response = await fetch(`https://hsu-store-backend.vercel.app/api/users/verify-email/${token}`, {
@@ -28,7 +27,6 @@ const EmailVerified = () => {
                   navigator('/')
                 }, 3000)
             } else {
-                setIsVerified(0)
                 const json = await response.json();
                 console.log(json);
             }
@@ -36,6 +34,8 @@ const EmailVerified = () => {
             console.error('Error:', error);
         }
     };
+    handleEmailVerified()
+    },[dispatch, json, navigator])
 
 
     const getToken = () => {
@@ -45,7 +45,7 @@ const EmailVerified = () => {
 
     if (isVerified === 1) {
       return (
-        <div className="h-screen w-full" onLoad={handleEmailVerified}>
+        <div className="h-screen w-full">
             <div className="h-screen flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-center items-center sm:gap-10 gap-6">
                     <img className="object-center flex sm:w-[100px] w-[50px]" src={GreenCheck} alt="Green Check" />
@@ -67,17 +67,6 @@ const EmailVerified = () => {
         </div>
     );
     }
-    if(isVerified === 0) {
-    return (
-      <div className='flex flex-col h-screen justify-center items-center font-["Poppins"] sm:text-3xl gap-2'>
-        <MdErrorOutline  className='sm:text-[100px] text-[50px]' color='red'/>
-        <div className='flex flex-row'>
-        <span className='text-neutral-500'>Oops!&nbsp;</span>
-        <span>Something went wrong</span>
-        </div>
-      </div>
-    )
-  }
   else {
     return (
       <div className='h-screen flex justify-center items-center'>
