@@ -69,8 +69,9 @@ const EmailVerified = () => {
     }
   else {
     return (
-      <div className='h-screen flex justify-center items-center'>
-        Loading ...
+      <div className='h-screen flex justify-center items-center font-["Poppins"] sm:text-3xl bg-stone-200 gap-2'>
+        Loading
+        <div className='loader'></div>
       </div>
     )
   }
