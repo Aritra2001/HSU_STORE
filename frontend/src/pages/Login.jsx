@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { IconContext } from 'react-icons';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notify } from '../helper/notify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -11,6 +13,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const { dispatch } = useAuthContext()
+    const navigator = useNavigate()
     var json = ''
 
     const togglePasswordVisibility = () => {
@@ -48,8 +52,11 @@ const Login = () => {
 
         if(response.ok) {
           try {
+            localStorage.setItem('user', JSON.stringify(json))
+            dispatch({type: 'SIGNUP', payload: json})
             setEmail('')
             setPassword('')
+            navigator('/')
           } catch(e) {
             throw new Error(e)
           }

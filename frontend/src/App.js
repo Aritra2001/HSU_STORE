@@ -4,36 +4,46 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import EmailVerified from './pages/EmailVerified';
+import { useAuthContext } from "./hooks/useAuthContext";
+import Home from './pages/Home';
 
 
 function App() {
+
+  const { user } = useAuthContext()
+
   return (
     <BrowserRouter>
     <Routes>
 
     <Route 
     path='/signup'
-    element={<Signup />}
+    element={!user ? <Signup /> : <Home />}
     />
 
     <Route 
     path='/login'
-    element={<Login />}
+    element={!user ? <Login /> : <Home />}
     />
 
     <Route
     path='/forgot-password'
-    element={<ForgotPassword />}
+    element={!user ? <ForgotPassword /> : <Home />}
     />
 
     <Route
     path='/reset-password/:token'
-    element={<ResetPassword />}
+    element={!user ? <ResetPassword /> : <Home />}
     />
 
-<Route
+    <Route
     path='/email-verify/:token'
     element={<EmailVerified />}
+    />
+
+    <Route
+    path='/'
+    element={<Home />}
     />
 
     </Routes>
