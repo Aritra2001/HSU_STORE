@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { IconContext } from 'react-icons';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { notify } from '../helper/notify';
@@ -63,12 +61,7 @@ const ForgotPassword = () => {
                     </span>
                 </div>
                 <div className='flex flex-col justify-center items-center'>
-                    <div className="text-black sm:text-[25px] text-[15px] font-medium font-px['Poppins'] leading-[15px]">
-                    Enter your email address or phone number that you
-                    </div>
-                    <div className="text-black sm:text-[25px] text-[15px] font-medium font-px['Poppins'] leading-[40px]">
-                    use with your account to continue.
-                    </div>
+                <div className="w-[273px] sm:w-[547px] sm:text-xl text-center text-black text-[10px] font-normal font-['Poppins'] max-sm:mb-4">Enter your email address or phone number that you use with your account to continue.</div>
                 </div>
                 <div className='flex flex-col sm:gap-7 gap-4'>
 

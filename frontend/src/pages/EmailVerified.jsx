@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { IconContext } from 'react-icons';
-import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { notify } from '../helper/notify';
-import GreenCheck from '../Assets/GreenCheck.jpg';
+import GreenCheck from '../assets/GreenCheck.svg';
 
 const EmailVerified = () => {
 
-    const [loading, setLoading] = useState(false);
     var json = ''
 
 
@@ -21,7 +15,6 @@ const EmailVerified = () => {
     const handleEmailVerified = async () => {
     
         const token=getToken();
-        setLoading(true)
         const response = await fetch(`https://hsu-store-backend.vercel.app/api/users/verify-email/${token}`, {
     
           method: 'GET',
@@ -60,7 +53,7 @@ const EmailVerified = () => {
 
                 <div className='max-sm:mt-8'>
                     <span className="text-violet-600 sm:text-xl text-xs font-normal font-['Poppins']">
-                            <a href="/forgot-password">Return to profile</a>
+                            <a href="/">Return to profile</a>
                     </span>
                 </div>
 
