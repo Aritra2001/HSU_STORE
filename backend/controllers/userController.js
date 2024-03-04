@@ -81,7 +81,7 @@ const SignupUser = async (req, res) => {
             <tr>
             <td style="width: 100%;">
             <p><span>Hi ${user.name},</span></p>
-            <p><span>Welcome to your Hex-Star Universer Store. Please Verify your email here:</span></p>
+            <p><span>Welcome to your Hex-Star Universe Store. Please Verify your email here:</span></p>
             <a href="${link}"><button style="border-radius: 7px; background: #9333ea; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Verify Email</button></a>
             <p>If you have not Signed up, just ignore and delete this message.<br/>To keep your account secure, please don't forward this email to anyone.<br/> See our Help Center for&nbsp;<a href="https://www.google.com" target="_blank" rel="noopener">more security tips.</a></p>
             <span><p>Happy Space Travel!</p></span>

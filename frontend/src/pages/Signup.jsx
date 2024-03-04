@@ -28,7 +28,7 @@ const Signup = () => {
     
         const signup = {email, name, Password, phone}
         setLoading(true)
-        const response = await fetch('https://hsu-store.vercel.app/api/users/signup', {
+        const response = await fetch('https://hsu-store-backend.vercel.app/api/users/signup', {
     
           method: 'POST',
           body: JSON.stringify(signup),
