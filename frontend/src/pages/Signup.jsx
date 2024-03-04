@@ -51,6 +51,7 @@ const Signup = () => {
 
         if(response.ok) {
           try {
+            localStorage.setItem('user', JSON.stringify(json))
             setEmail('')
             setName('')
             setPassword('')
