@@ -11,7 +11,7 @@ const app = express()
 
 //cors
 const allowedOrigins = [
-    "http://localhost:3000"
+    "http://localhost:3000", "https://hsu-store-frontend.vercel.app"
 
 ];
 
