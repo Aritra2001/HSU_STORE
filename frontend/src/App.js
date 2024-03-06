@@ -11,6 +11,7 @@ import Home from './pages/Home';
 function App() {
 
   const { user } = useAuthContext()
+  // console.log(user.user.name.verifiedStatus)
 
   return (
     <BrowserRouter>
