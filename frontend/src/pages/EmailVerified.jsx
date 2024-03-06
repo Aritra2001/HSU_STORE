@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const EmailVerified = () => {
     const [isVerified, setIsVerified] = useState(999);
-    const json = useRef(null)
+    var json = ''
     const { dispatch } = useAuthContext()
     const navigator = useNavigate()
 
@@ -19,7 +19,7 @@ const EmailVerified = () => {
                 method: 'GET',
             });
 
-            json.current = await response.json()
+            json = await response.json()
             if (response.ok) {
                 setIsVerified(1);
                 localStorage.setItem('user', JSON.stringify(json))
