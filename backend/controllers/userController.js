@@ -94,7 +94,7 @@ const SignupUser = async (req, res) => {
             </html>`
         })
 
-        res.status(200).json({user, token, status: 'not_verified'})
+        res.status(200).json({user, token})
         
     } catch (error) {
         res.status(400).json({error: error.message})

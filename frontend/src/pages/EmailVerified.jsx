@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import GreenCheck from '../assets/GreenCheck.svg';
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const EmailVerified = () => {
     const [isVerified, setIsVerified] = useState(999);
-    var json = localStorage.getItem('user')
+    const json = useRef(null)
     const { dispatch } = useAuthContext()
     const navigator = useNavigate()
 
@@ -19,9 +19,10 @@ const EmailVerified = () => {
                 method: 'GET',
             });
 
-
+            json.current = await response.json()
             if (response.ok) {
                 setIsVerified(1);
+                localStorage.setItem('user', JSON.stringify(json))
                 dispatch({type: 'LOGIN', payload: json})
                 setTimeout(() => {
                   navigator('/')

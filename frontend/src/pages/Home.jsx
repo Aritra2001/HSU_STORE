@@ -9,8 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         try {
-            const user_data = JSON.parse(localStorage.getItem('user'))
-            if(user && user_data.user.new_user === true) {
+            if(user && user.user.new_user === true) {
                 setShowPopup(true)
             }
         }
