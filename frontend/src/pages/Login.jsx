@@ -53,7 +53,7 @@ const Login = () => {
         if(response.ok) {
           try {
             localStorage.setItem('user', JSON.stringify(json))
-            dispatch({type: 'SIGNUP', payload: json})
+            dispatch({type: 'LOGIN', payload: json})
             setEmail('')
             setPassword('')
             navigator('/')
