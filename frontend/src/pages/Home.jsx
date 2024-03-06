@@ -9,7 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         try {
-            if(user && user.user.new_user === true) {
+            if(user && user.status === true) {
                 setShowPopup(true)
             }
         }
