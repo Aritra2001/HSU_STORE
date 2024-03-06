@@ -61,7 +61,7 @@ const SignupUser = async (req, res) => {
         const token = createToken(user._id)
         await User.findByIdAndUpdate(user._id, {verifyToken: token, verifiedStatus: false})
 
-        var link = `http://localhost:3000/email-verify/${token}`
+        var link = `https://hsu-store-frontend.vercel.app/email-verify/${token}`
 
         // send signup verification mail
         await resendinstance.emails.send({
@@ -183,7 +183,7 @@ const forgotpassword = async (req, res) => {
             await User.findByIdAndUpdate(user._id, {passwordResetToken: hash_token, passwordResetTokenExpire: Date.now() + 20 * 60 * 1000})
 
             //email send
-            const link = `http://localhost:3000/reset-password/${token}`
+            const link = `https://hsu-store-frontend.vercel.app/reset-password/${token}`
 
             await resendinstance.emails.send({
                 from: 'network@hexstaruniverse.com',
