@@ -43,9 +43,6 @@ const userSchema = new Schema({
     phone: {
         type: Number,
         required: true
-    },
-    new_user : {
-        type: Boolean,
     }
 }, {timestamps: true})
 
