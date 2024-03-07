@@ -19,7 +19,7 @@ const Home = () => {
     },[user])
 
   return (
-    <div className='flex h-screen justify-center items-center font-["Poppins"]'>
+    <div className={`flex h-screen justify-center items-center font-["Poppins"] ${showPopup ? `darken` : ''}`}>
       Home page
       {showPopup && <Popup />}
     </div>
