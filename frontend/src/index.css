@@ -10,16 +10,35 @@ input[type=number]::-webkit-inner-spin-button,
       margin: 0;
     }
 /* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
 .loader {
-  width: 124px;
-  height: 24px;
-  -webkit-mask: 
-    conic-gradient(from 135deg at top   ,#0000,#000 .5deg 90deg,#0000 90.5deg) 0 0   ,
-    conic-gradient(from -45deg at bottom,#0000,#000 .5deg 90deg,#0000 90.5deg) 0 100%;
-  -webkit-mask-size:25% 50%;
-  -webkit-mask-repeat:repeat-x;
-  background: linear-gradient(#6637ED 0 0) left/0% 100% no-repeat #ddd;
-  animation: l13 2s infinite linear;
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(from 120deg at 50% 64%,#0000, #6637ED 1deg 120deg,#0000 121deg);
+  animation: l27-0 1.5s infinite cubic-bezier(0.3,1,0,1);
+}
+.loader:before,
+.loader:after {
+  content:'';
+  position: absolute;
+  inset:0;
+  background:inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s:-1;
+}
+@keyframes l27-0 {
+   0%,30%      {transform: rotate(0)}
+   70%         {transform: rotate(120deg)}
+   70.01%,100% {transform: rotate(360deg)}
+}
+@keyframes l27-1 {
+   0%      {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+   30%,70% {transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px)}
+   100%    {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
 }
 @keyframes l13 {
   100% {background-size: 100% 100%}
@@ -29,4 +48,7 @@ input[type=number]::-webkit-inner-spin-button,
     width: 90px;
     height: 15px;
   }
+}
+.darken {
+  background-color: rgba(0, 0, 0, 0.5);
 }

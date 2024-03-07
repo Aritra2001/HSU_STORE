@@ -48,15 +48,15 @@ const EmailVerified = () => {
       return (
         <div className="h-screen w-full">
             <div className="h-screen flex flex-col justify-center items-center">
-                <div className="flex flex-col justify-center items-center sm:gap-10 gap-6">
-                    <img className="object-center flex sm:w-[100px] w-[50px]" src={GreenCheck} alt="Green Check" />
-                    <div className="text-neutral-500 sm:text-[38px] font-medium font-['Poppins'] sm:leading-[20px] leading-[5px]">
+                <div className="flex flex-col justify-center items-center sm:gap-7 gap-6">
+                    <img className="object-center flex sm:w-[80px] w-[50px]" src={GreenCheck} alt="Green Check" />
+                    <div className="text-neutral-500 sm:text-[28px] font-medium font-['Poppins'] sm:leading-[20px] leading-[5px]">
                         Your email ID has been&nbsp;
                     </div>
-                    <div className="flex flex-col justify-center items-center text-black sm:text-[38px] font-medium font-['Poppins'] leading-[0px]">
+                    <div className="flex flex-col justify-center items-center text-black sm:text-[28px] font-medium font-['Poppins'] leading-[0px]">
                         verified successfully
                     </div>
-                    <span className="text-neutral-500 sm:text-[38px] font-medium font-['Poppins'] leading-[72px]"></span>
+                    <span className="text-neutral-500 sm:text-[28px] font-medium font-['Poppins'] leading-[72px]"></span>
                 </div>
 
                 <div className="max-sm:mt-8">
@@ -71,7 +71,7 @@ const EmailVerified = () => {
   else {
     return (
       <div className='h-screen flex justify-center items-center font-["Poppins"] sm:text-3xl bg-stone-200 gap-2'>
-        Loading
+        
         <div className='loader'></div>
       </div>
     )

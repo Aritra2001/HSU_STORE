@@ -74,10 +74,10 @@ const ResetPassword = () => {
         <div className='h-screen w-full'>
             <div className='h-screen flex flex-col justify-center items-center sm:gap-10'>
                 <div>
-                    <span className="text-neutral-500 sm:text-[38px] font-medium font-['Poppins'] leading-[72px]">
+                    <span className="text-neutral-500 sm:text-[28px] font-medium font-['Poppins'] leading-[72px]">
                         Reset your&nbsp;
                     </span>
-                    <span className="text-black sm:text-[38px] font-medium font-['Poppins'] leading-[72px]">
+                    <span className="text-black sm:text-[28px] font-medium font-['Poppins'] leading-[72px]">
                         Password
                     </span>
                     <span className="text-neutral-500 sm:text-[38px] font-medium font-['Poppins'] leading-[72px]"> 
@@ -86,19 +86,19 @@ const ResetPassword = () => {
                 <div className='flex flex-col sm:gap-7 gap-4'>
 
                     <div className="relative">
-                        <input type={showPassword ? "text" : "password"} className="sm:w-[613px] sm:h-[73px] w-[263px] h-[51.10px] rounded-[9px] bg-white bg-opacity-50 sm:rounded-[15px] border border-black backdrop-blur-[22px] sm:indent-[3.5rem] placeholder:text-neutral-500 sm:text-xl text-xs indent-[1.6rem] font-normal font-['Montserrat']" onCopy={(e)=>e.preventDefault()} placeholder='Enter new password' value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' required/>
-                        <IconContext.Provider value={{ className: 'absolute sm:right-16 right-8 top-[50%] cursor-pointer transform -translate-y-1/2 sm:text-[28px]'}}>
+                        <input type={showPassword ? "text" : "password"} className="sm:w-[520px] sm:h-[62px] w-[263px] h-[51.10px] rounded-[9px] bg-white bg-opacity-50 sm:rounded-[15px] border border-black backdrop-blur-[22px] sm:indent-[3.5rem] placeholder:text-neutral-500 sm:text-[16px] text-xs indent-[1.6rem] font-normal font-['Montserrat']" onCopy={(e)=>e.preventDefault()} placeholder='Enter new password' value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='current-password' required/>
+                        <IconContext.Provider value={{ className: 'absolute sm:right-14 right-8 top-[50%] cursor-pointer transform -translate-y-1/2 sm:text-[20px]'}}>
                             {!showPassword ? <FaRegEyeSlash onClick={togglePasswordVisibility} color='#7D7D7D'/> : <FaRegEye onClick={togglePasswordVisibility} color='#7D7D7D'/>}
                         </IconContext.Provider>
                     </div>
                     <div className="relative">
-                        <input type={"password"} className="sm:w-[613px] sm:h-[73px] w-[263px] h-[51.10px] rounded-[9px] bg-white bg-opacity-50 sm:rounded-[15px] border border-black backdrop-blur-[22px] sm:indent-[3.5rem] placeholder:text-neutral-500 sm:text-xl text-xs indent-[1.6rem] font-normal font-['Montserrat']" placeholder='Re-enter new password' value={confirmpassword} onChange={(e) => setReenterPassword(e.target.value)} onPaste={(e)=>e.preventDefault()} autoComplete='current-password' required/>
+                        <input type={"password"} className="sm:w-[520px] sm:h-[62px] w-[263px] h-[51.10px] rounded-[9px] bg-white bg-opacity-50 sm:rounded-[15px] border border-black backdrop-blur-[22px] sm:indent-[3.5rem] placeholder:text-neutral-500 sm:text-[16px] text-xs indent-[1.6rem] font-normal font-['Montserrat']" placeholder='Re-enter new password' value={confirmpassword} onChange={(e) => setReenterPassword(e.target.value)} onPaste={(e)=>e.preventDefault()} autoComplete='current-password' required/>
                     </div>
 
 
                 </div>
 
-                <button className="capitalize sm:w-[613px] sm:h-14 bg-violet-600 w-[263px] h-[39.20px] rounded-[9px] sm:rounded-[15px] border border-black backdrop-blur-[22px] text-white sm:text-xl text-xs font-normal font-['Poppins'] max-sm:mt-8 hover:bg-violet-700 disabled:opacity-75 " onClick={handleResetPassword} disabled={loading}>{loading ? <>Loading...</> : <>change password</>}</button>
+                <button className="capitalize sm:w-[520px] sm:h-14 bg-violet-600 w-[263px] h-[39.20px] rounded-[9px] sm:rounded-[15px] border border-black backdrop-blur-[22px] text-white sm:text-xl text-xs font-normal font-['Poppins'] max-sm:mt-8 hover:bg-violet-700 disabled:opacity-75 " onClick={handleResetPassword} disabled={loading}>{loading ? <>Loading...</> : <>change password</>}</button>
                 <ToastContainer />
 
             </div>
