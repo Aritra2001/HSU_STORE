@@ -14,7 +14,7 @@ const Popup = ({ onClose }) => {
         </div>
       </div>
       <div className='absolute flex flex-row gap-4 bottom-8'>
-        <button className='w-[116.22px] h-[32.33px] font-medium rounded-md border border-black text-[13px]'>home page</button>
+        <button className='w-[116.22px] h-[32.33px] font-medium rounded-md border border-black text-[13px]' onClick={onClose}>home page</button>
         <button className='w-[116.22px] h-[32.33px] font-medium rounded-md border bg-violet-600 border-violet-600 text-white text-[13px]'>use coins</button>
       </div>
     </div>

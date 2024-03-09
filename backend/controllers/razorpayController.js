@@ -26,10 +26,10 @@ const razorpayCreateOrder = async(req, res) => {
         const response = await razorpay.orders.create(options);
 
         if(response.status === 'paid') {
-            await User.findByIdAndUpdate(user._id, {hex_coins: hex_coins})
+            await User.findByIdAndUpdate(user._id, {hex_coins: user.hex_coins + hex_coins})
         }
 
-        res.status(200).json({user})
+        res.status(200).json({response, user})
 
     } catch (error) {
         res.status(400).json({error: error.message})
