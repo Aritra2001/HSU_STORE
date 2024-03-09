@@ -23,8 +23,10 @@ const Home = () => {
     };
   
     useEffect(() => {
-      handleConfetti()
-    },[])
+      if(showPopup) {
+        handleConfetti()
+      }
+    },[showPopup])
 
     const handleClosePopup = () => {
         setShowPopup(false);
