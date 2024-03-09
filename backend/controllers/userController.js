@@ -5,6 +5,9 @@ const validator = require('validator')
 const crypto = require('crypto')
 const { Resend } = require('resend')
 
+//hsu logo link
+var img_link = 'https://hexstaruniverse.com/wp-content/uploads/Group-48095413-8.png'
+
 
 //jwt Token create function with expiration time
 const createToken_Time = function (_id) {
@@ -80,6 +83,7 @@ const SignupUser = async (req, res) => {
             <tbody>
             <tr>
             <td style="width: 100%;">
+            <a href="https://www.hexstaruniverse.com"><span><img src="${img_link}" alt="Hex-Star Universe" style="width: 120px; height: auto;"></span></a>
             <p><span>Hi ${user.name},</span></p>
             <p><span>Welcome to your Hex-Star Universe Store. Please Verify your email here:</span></p>
             <a href="${link}"><button style="border-radius: 7px; background: #9333ea; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Verify Email</button></a>
@@ -200,6 +204,7 @@ const forgotpassword = async (req, res) => {
                         <tbody>
                         <tr>
                         <td style="width: 100%;">
+                        <a href="https://www.hexstaruniverse.com"><span><img src="${img_link}" alt="Hex-Star Universe" style="width: 120px; height: auto;"></span></a>
                         <p><span>Hi ${user.name},</span></p>
                         <p><span>Someone recently requested a password change for your Hex-Star Universe store account.<br/>If it was you, you can reset your password here:</span></p>
                         <a href="${link}"><button style="border-radius: 7px; background: #9333ea; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Reset Password</button></a>
