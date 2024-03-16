@@ -8,31 +8,9 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import Home from './pages/Home';
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
-import { useEffect } from 'react';
 
 function App() {
   const { user } = useAuthContext();
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-        if (user === process.env.REACT_APP_ADMIN_EMAIL) {
-            event.preventDefault();
-            return event.returnValue = "";
-        }
-    };
-
-    const handleOnUnload = () => {
-        localStorage.removeItem("user");
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("unload", handleOnUnload);
-
-    return () => {
-        window.removeEventListener("beforeunload", handleBeforeUnload);
-        window.removeEventListener("unload", handleOnUnload);
-    };
-}, [user]);
 
   return (
     <BrowserRouter>

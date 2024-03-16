@@ -1,6 +1,7 @@
 const Razorpay = require('razorpay');
 const User = require('../models/userModel');
-const paypal = require('paypal-rest-sdk')
+const paypal = require('paypal-rest-sdk');
+const crypto = require('crypto')
 const date = new Date()
 
 // Initialize Razorpay with your API keys
@@ -25,26 +26,42 @@ const razorpayCreateOrder = async(req, res) => {
     const user = await User.findOne({ _id: user_id })
 
     const options = {
-        amount: amount,  // amount in the smallest currency unit (e.g., paise for INR)
+        amount: amount * 100,  // amount in the smallest currency unit (e.g., paise for INR)
         currency: 'INR',
         receipt: (user._id) + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
     };
 
     try {
-
-        const response = await razorpay.orders.create(options);
-
-        if(response.status === 'paid') {
-
-            response.status = paid
-
-        }
-
-        res.status(200).json({response, user})
-
+        razorpay.orders.create(options, function(error, order) {
+            if(error) {
+                res.status(400).json({error: 'something went wrong!'})
+            }
+            
+            res.status(200).json({order: order})
+        })
     } catch (error) {
+        res.status(500).json({error: 'Internal server error!'})
+    }
+}
 
-        res.status(400).json({error: error.message})
+const razorpayVerifyOrder = async (req, res) => {
+
+    try {
+
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body
+
+        const sign = razorpay_order_id + '|' + razorpay_payment_id
+        const expected_sign = crypto.createHmac('sha256', process.env.RAZOR_PAY_KEY_SECRET).update(sign.toString()).digest('hex')
+
+        if(razorpay_signature === expected_sign) {
+            res.status(200).json({message: 'Payment verified successfully!'})
+        }
+        else {
+            res.status(400).json({message: 'Invalid payment signature!'})
+        }
+        
+    } catch (error) {
+        res.status(500).json({error: 'Internal server error!'})
     }
 }
 
@@ -105,4 +122,4 @@ const getHex_Coins = async (req, res) => {
 
 }
 
-module.exports = { razorpayCreateOrder, paypalCreateOrders, paypalExecuteOrders, getHex_Coins }
+module.exports = { razorpayCreateOrder, paypalCreateOrders, paypalExecuteOrders, getHex_Coins, razorpayVerifyOrder }

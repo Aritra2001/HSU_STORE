@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { IconContext } from 'react-icons';
