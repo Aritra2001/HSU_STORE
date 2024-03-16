@@ -10,12 +10,6 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZOR_PAY_KEY_SECRET
 });
 
-//paypal configuration
-paypal.configure({
-    mode: 'sandbox',
-    client_id: process.env.PAYPAL_CLIENT_ID,
-    client_secret: process.env.PAYPAL_CLIENT_SECRET
-})
 
 
 // Define a route to create a Razorpay order
@@ -65,54 +59,7 @@ const razorpayVerifyOrder = async (req, res) => {
     }
 }
 
-const paypalCreateOrders = async (req, res) => {
-
-    const user_id = req.user._id
-    const { amount, hex_coins } = req.body
-    const user = await User.findOne({ _id: user_id })
-
-    paypal.payment.create({
-        intent: 'sale',
-        payer: {
-            payment_method: 'paypal'
-        },
-        redirect_urls: {
-            return_url: 'http://localhost:3000/success',
-            cancel_url: 'http://localhost:3000/cancel'
-        },
-        transactions: [{
-            amount: {
-                total: amount,
-                currency: 'USD'
-            },
-            description: `PAYPAL payment for ${amount} for ${hex_coins} Hex-coins`
-        }]
-    }, function (error, payment) {
-        if (error) {
-            console.error(error.message);
-          } else {
-            // Redirect the buyer to PayPal
-            for (let i = 0; i < payment.links.length; i++) {
-              if (payment.links[i].rel === 'approval_url') {
-                res.redirect(payment.links[i].href);
-              }
-            }
-        }
-        
-    })
-}
-
-const paypalExecuteOrders = async(req, res) => {
-
-    paypal.payment.execute(paymentId, payerId, function (error, payment) {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log('Payment executed successfully:', payment);
-        }
-      });
-}
-
+// get hex coins in account
 const getHex_Coins = async (req, res) => {
 
     const user_id = req.user._id
@@ -122,4 +69,4 @@ const getHex_Coins = async (req, res) => {
 
 }
 
-module.exports = { razorpayCreateOrder, paypalCreateOrders, paypalExecuteOrders, getHex_Coins, razorpayVerifyOrder }
+module.exports = { razorpayCreateOrder,getHex_Coins, razorpayVerifyOrder }
