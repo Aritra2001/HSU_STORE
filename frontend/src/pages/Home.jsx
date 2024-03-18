@@ -4,6 +4,7 @@ import Popup from '../components/Popup';
 import Confetti from 'react-confetti';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
     const { user } = useAuthContext();
@@ -78,11 +79,16 @@ const Home = () => {
     };
 
     return (
-        <div className={`flex h-screen justify-center items-center font-["Poppins"] ${showPopup ? 'darken' : ''}`}>
-            <button className='capitalize border border-black p-2 rounded-3xl' onClick={handelPayment}>buy now</button>
+        <div className={`flex flex-col h-screen font-["Poppins"] ${showPopup ? 'darken' : ''}`}>
+            <Navbar />
+            <div className='h-[76px] bg-violet-600'></div>
+            <div className="flex h-screen justify-center items-center">
+               
+            </div>
             {confetti && <Confetti  width={window.innerWidth} height={window.innerHeight} numberOfPieces={400} recycle={false} gravity={0.05} wind={0.02} tweenDuration={10000} />}
             {showPopup && <Popup onClose={handleClosePopup} />}
         </div>
+
     );
 }
 
