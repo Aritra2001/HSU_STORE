@@ -43,6 +43,9 @@ const userSchema = new Schema({
     phone: {
         type: Number,
         required: true
+    },
+    address: {
+        type: String
     }
 }, {timestamps: true})
 
