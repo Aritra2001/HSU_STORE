@@ -5,6 +5,7 @@ const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const redeemCodeRoutes = require('./routes/redeemCodeRoutes')
 const razorpayRoutes = require('./routes/razorpay')
+const categoryRoutes = require('./routes/categoryRoutes')
 
 //express app
 const app = express()
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 app.use('/api/users', userRoutes)
 app.use('/api/admin', redeemCodeRoutes)
 app.use('/api/users', razorpayRoutes)
+app.use('/api/admin', categoryRoutes)
 
 //database connection
 mongoose.connect(process.env.MONGO_URI)
