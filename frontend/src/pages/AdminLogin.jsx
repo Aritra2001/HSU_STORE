@@ -4,6 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { IconContext } from 'react-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
 
@@ -12,6 +13,7 @@ const AdminLogin = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const { dispatch } = useAuthContext()
+    const navigate = useNavigate();
     var json = {}
 
     const togglePasswordVisibility = () => {
@@ -32,11 +34,12 @@ const AdminLogin = () => {
             }
     
             if(email === process.env.REACT_APP_ADMIN_EMAIL && password === process.env.REACT_APP_ADMIN_PASSWORD) {
-    
+
                 setLoading(false)
                 json = email
                 localStorage.setItem('user', JSON.stringify(json))
                 dispatch({type: 'LOGIN', payload: json})
+                navigate('/admin_dashboard')
             }
     
             else {
