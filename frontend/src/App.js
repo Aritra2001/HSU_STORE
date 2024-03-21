@@ -41,7 +41,11 @@ function App() {
         />
         <Route
           path='/admin_hsu_store'
-          element={!user ? <AdminLogin /> : <AdminPanel />}
+          element={<AdminLogin />}
+        />
+        <Route
+          path='/admin_dashboard'
+          element={user === process.env.REACT_APP_ADMIN_EMAIL ? <AdminPanel /> : <AdminLogin />}
         />
       </Routes>
     </BrowserRouter>

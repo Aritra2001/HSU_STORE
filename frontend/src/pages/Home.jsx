@@ -84,9 +84,11 @@ const Home = () => {
             <div className='h-[76px] bg-violet-600'></div>
             <div className="flex h-screen justify-center items-center">
                
-            </div>
+            
             {confetti && <Confetti  width={window.innerWidth} height={window.innerHeight} numberOfPieces={400} recycle={false} gravity={0.05} wind={0.02} tweenDuration={10000} />}
             {showPopup && <Popup onClose={handleClosePopup} />}
+            
+            </div>
         </div>
 
     );
