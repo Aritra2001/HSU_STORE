@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'; // Import useLocation from react
 import { useAuthContext } from "../hooks/useAuthContext";
 import Logo from '../assets/Logo.svg';
 import cart from '../assets/cart.svg';
-import { CiSearch } from "react-icons/ci";
+import { AiOutlineSearch } from 'react-icons/ai'
 import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Navbar = () => {
@@ -28,10 +28,16 @@ const Navbar = () => {
                     <a href="https://hexstaruniverse.com"><img className='w-[84px]' src={Logo} alt="hexstar universe"/></a>
                     <a href="/"><li className={isLinkActive('') ? 'text-violet-500 hover:text-violet-500 delay-100' : 'hover:text-violet-500 delay-100'}>coin store</li></a>
                     <div className='relative'>
-                        <CiSearch size={17} color='#7A7A7A' className='absolute top-[20%] left-8'/>
-                        <input type='text' value={search} onChange={(e) => setSearch(e.target.value)} placeholder='search in store' className='w-[214px] h-[29px] bg-gray-200 rounded-2xl border border-black text-zinc-500 text-xs font-medium placeholder:text-center text-center'/>
+                        <input 
+                            type='text' 
+                            value={search} 
+                            onChange={(e) => setSearch(e.target.value)} 
+                            placeholder='search in store' 
+                            className='w-[214px] h-[29px] pl-10 pr-10 bg-gray-200 rounded-2xl border border-black text-zinc-500 text-xs font-medium placeholder:indent-[0.5rem] indent-[0.5rem]'
+                        />
+                        <button className='flex justify-center items-center absolute top-[50%] right-[0.5px] transform -translate-y-1/2 cursor-pointer bg-white w-11 h-7 shadow rounded-2xl'><AiOutlineSearch size={20} color='#000000' className=''/></button>
                     </div>
-                    <IoPersonCircleOutline size={29} className={user ? `text-purple-500` : `text-zinc-500`}/>
+                    <IoPersonCircleOutline size={29} className={`${user ? `text-purple-500` : `text-zinc-500`} cursor-pointer`}/>
                     <a href="/"><img className='w-[29px]' src={cart} alt="view cart"/></a>
                 </ul>
             </nav>
