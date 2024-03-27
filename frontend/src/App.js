@@ -8,6 +8,8 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import Home from './pages/Home';
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
+import NavbarHeader from './components/NavbarHeader';
+import NavbarFooter from './components/NavbarFooter';
 
 function App() {
   const { user } = useAuthContext();
@@ -46,6 +48,7 @@ function App() {
         <Route
           path='/admin_dashboard'
           element={user === process.env.REACT_APP_ADMIN_EMAIL ? <AdminPanel /> : <AdminLogin />}
+        />
         />
       </Routes>
     </BrowserRouter>
