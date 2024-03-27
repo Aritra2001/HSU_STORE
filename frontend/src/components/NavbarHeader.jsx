@@ -37,9 +37,9 @@ const NavbarHeader = () => {
           checked={isChecked}
           onClick={handleToggle}
         />
-        <div className={`w-[47px] h-[21px] items-right bg-gray-300 rounded-full shadow-inner ${isChecked ? 'bg-green-500' : ''}`}>
-          <div className={`w-[19px] h-[19px] bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out ${isChecked ? 'translate-x-7' : 'off'}`}/>
-          <span className='absolute inset-0 ml-4 h-[52px] flex flex-row items-center justify-center font-["inter"] text-gray-700 text-[10px]'>
+        <div className={`relative w-[47px] h-[21px] items-right bg-gray-300 rounded-full shadow-inner ${isChecked ? 'bg-green-500' : ''}`}>
+          <div className={`absolute left-[1px] top-[1px] flex w-[19px] h-[19px] bg-white rounded-full shadow-md transform transition-transform duration-300 ease-in-out ${isChecked ? 'translate-x-[1.65rem]' : 'off'}`}/>
+          <span className='absolute pt-0.5 inset-0 ml-4 flex flex-row items-center justify-center font-["inter"] text-zinc-500 font-bold text-[10px]'>
           {isChecked ? '' : 'OFF'}
         </span>
         </div>
